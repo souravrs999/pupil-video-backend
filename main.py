@@ -6,6 +6,7 @@ import log
 import logging
 import traceback
 import sys
+from threading import Thread
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d','--device', help='Options: world or eye0 or eye1',required=False)
@@ -38,4 +39,10 @@ def get_int(str):
     sys.exit(0)
 
 if __name__ == "__main__":
-    main(args.ip, args.port, args.device, args.videosource, args.videoparameter)
+    #main(args.ip, args.port, args.device, args.videosource, args.videoparameter)
+
+    eye0 = Thread(target=main, args=(127.0.0.1,
+        50020, 'eye0', 1, '640, 480, 30'))
+
+    eye1 = Thread(target=main, args=(127.0.0.1,
+        50020, 'eye1', 2, '640, 480, 30'))
