@@ -39,10 +39,4 @@ def get_int(str):
     sys.exit(0)
 
 if __name__ == "__main__":
-    #main(args.ip, args.port, args.device, args.videosource, args.videoparameter)
-
-    eye0 = Thread(target=main, args=(127.0.0.1,
-        50020, 'eye0', 1, '640, 480, 30'))
-
-    eye1 = Thread(target=main, args=(127.0.0.1,
-        50020, 'eye1', 2, '640, 480, 30'))
+    main(args.ip, args.port, args.device, args.videosource, args.videoparameter)
